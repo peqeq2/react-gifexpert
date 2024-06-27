@@ -1,8 +1,7 @@
-import { useState } from "react"
-
+import './AddCategory.css';
+import { useState } from "react";
 
 export const AddCategory = ({ onNewCategory }) => {
-
   const [inputValue, setInputValue] = useState('');
 
   const InputChange = ({target}) => {
@@ -14,16 +13,18 @@ export const AddCategory = ({ onNewCategory }) => {
     if(inputValue.trim().length <= 1) return;
 
     onNewCategory(inputValue.trim());
-    // setCategories( categories => [ ...categories, inputValue ]);
     setInputValue('');
   }
+
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className="form">
       <input
         type="text"
         placeholder="search gif"
+        className="form-control form-control-lg"
         value={inputValue}
-        onChange={(event) => InputChange(event)}/>
+        onChange={InputChange}
+      />
     </form>
   )
 }
